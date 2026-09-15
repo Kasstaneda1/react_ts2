@@ -3,7 +3,9 @@ import { type InputProps } from "./types";
 function Input({ name, type = "text", placeholder, label, id }: InputProps) {
   return (
     <div className="input_component">
-      <label className="input_label">{label}</label>
+      <label className="input_label" htmlFor={id}>
+        {label}
+      </label>
       <input
         className="input_input"
         id={id}

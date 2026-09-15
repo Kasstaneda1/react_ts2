@@ -1,18 +1,7 @@
-import { useState } from "react";
 import Button from "components/Button/Button";
 import "./styles.css";
-function Counter() {
-  const [count, setCount] = useState<number>(0);
-  const onMinus = (): void => {
-    setCount((prevValue: number): number => {
-      return prevValue - 1;
-    });
-  };
-  const onPlus = (): void => {
-    setCount((prevValue: number): number => {
-      return prevValue + 1;
-    });
-  };
+import { type CounterProps } from "./types";
+function Counter({ count, onMinus, onPlus }: CounterProps) {
   return (
     <div className="counter_wrapper">
       <div className="button_control">

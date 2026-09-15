@@ -1,3 +1,6 @@
+import Button from "components/Button/Button";
+import Counter from "components/Counter/Counter";
+import { useState } from "react";
 import "./styles.css";
 
 function Lesson_07() {
@@ -153,6 +156,28 @@ enum WEATHER_CODES {
   console.log(getWeather(decode, WEATHER_CODES.SQ));
   console.log(getWeather(decode, "asdad"));
 
-return <div>Lesson_07</div>;
+  // Типизация пропсов: состояние живет в родителе, Counter получает его через пропсы
+  const [count, setCount] = useState<number>(0);
+  const onMinus = (): void => {
+    setCount((prevValue: number): number => {
+      return prevValue - 1;
+    });
+  };
+  const onPlus = (): void => {
+    setCount((prevValue: number): number => {
+      return prevValue + 1;
+    });
+  };
+  const sendCountToServer = (): void => {
+    console.log(count);
+  };
+
+  return (
+    <div>
+      Lesson_07
+      <Button name="Send count to server" onClick={sendCountToServer} />
+      <Counter count={count} onMinus={onMinus} onPlus={onPlus} />
+    </div>
+  );
 }
 export default Lesson_07;
