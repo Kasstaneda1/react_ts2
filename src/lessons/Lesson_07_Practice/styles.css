@@ -1,0 +1,69 @@
+.practice_07 {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: system-ui, sans-serif;
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 16px;
+  font-size: 36px;
+  color: rgb(0, 81, 148);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 180px;
+  padding: 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.brand {
+  margin: 0;
+  font-size: 18px;
+}
+
+.price {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.fuel {
+  margin: 0;
+  align-self: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background-color: #eef2f7;
+  font-size: 13px;
+}
+
+.gas {
+ font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #1a1a1a;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+}
+
