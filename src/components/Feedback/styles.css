@@ -31,8 +31,3 @@
 .feedback_button {
   width: 130px;
 }
-
-.feedback_button .button_component {
-  padding: 0 10px;
-  font-size: 18px;
-}
