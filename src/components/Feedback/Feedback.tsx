@@ -1,7 +1,13 @@
-import "./styles.css";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import Button from "components/Button/Button";
+import {
+  FeedbackWrapper,
+  ResultsContainer,
+  Count,
+  ControlsContainer,
+  ButtonControl,
+} from "./styles";
 function Feedback() {
   const [likes, setLikes] = useState<number>(0);
   const [dislikes, setDislikes] = useState<number>(0);
@@ -29,23 +35,23 @@ function Feedback() {
   console.log("Rendering(updating) component Feedback", likes, dislikes);
 
   return (
-    <div className="feedback_wrapper">
-      <div className="feedback_results">
-        <p className="feedback_count">Likes: {likes}</p>
-        <p className="feedback_count">Dislikes: {dislikes}</p>
-      </div>
-      <div className="feedback_controls">
-        <div className="feedback_button">
+    <FeedbackWrapper>
+      <ResultsContainer>
+        <Count>Likes: {likes}</Count>
+        <Count>Dislikes: {dislikes}</Count>
+      </ResultsContainer>
+      <ControlsContainer>
+        <ButtonControl>
           <Button name="Like" type="button" onClick={onLike} />
-        </div>
-        <div className="feedback_button">
+        </ButtonControl>
+        <ButtonControl>
           <Button name="Dislike" type="button" onClick={onDislike} />
-        </div>
-        <div className="feedback_button">
+        </ButtonControl>
+        <ButtonControl>
           <Button name="Reset" type="button" onClick={onReset} />
-        </div>
-      </div>
-    </div>
+        </ButtonControl>
+      </ControlsContainer>
+    </FeedbackWrapper>
   );
 }
 export default Feedback;

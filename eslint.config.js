@@ -18,6 +18,9 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
   },
   {
     files: ['src/lessons/**/*.{ts,tsx}'],
@@ -26,7 +29,6 @@ export default defineConfig([
       'prefer-const': 'off',
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 ])

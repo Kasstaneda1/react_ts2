@@ -1,4 +1,6 @@
-.feedback_wrapper {
+import styled from "@emotion/styled";
+
+export const FeedbackWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,23 +13,23 @@
   padding: 20px;
   border-radius: 10px;
   font-family: Arial, Helvetica, sans-serif;
-}
+`;
 
-.feedback_results {
+export const ResultsContainer = styled.div`
   display: flex;
   gap: 30px;
-}
+`;
 
-.feedback_count {
+export const Count = styled.p`
   font-size: 28px;
   font-weight: bold;
-}
+`;
 
-.feedback_controls {
+export const ControlsContainer = styled.div`
   display: flex;
   gap: 15px;
-}
+`;
 
-.feedback_button {
+export const ButtonControl = styled.div`
   width: 130px;
-}
+`;
