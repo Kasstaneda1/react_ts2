@@ -1,21 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
+import { v4 } from "uuid";
 
 import Button from "components/Button/Button";
 
-import { type Joke } from "./types";
+import { type Joke, type JokeInList } from "./types";
 import {
   PageWrapper,
   Card,
   Title,
-  JokeContainer,
+  JokesList,
+  JokeItem,
+  JokeRow,
+  JokeText,
   Setup,
   Punchline,
   ErrorText,
+  ButtonControl,
 } from "./styles";
 
 function Homework_09() {
-  const [joke, setJoke] = useState<undefined | Joke>(undefined);
+  const [jokes, setJokes] = useState<JokeInList[]>([]);
   const [error, setError] = useState<undefined | string>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -24,39 +29,56 @@ function Homework_09() {
   const getJoke = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(JOKE_URL);
-      // Запрос прошел успешно - кладем шутку в state и убираем прошлую ошибку
-      setJoke(response.data);
+      const response = await axios.get<Joke>(JOKE_URL);
+      // Новая шутка добавляется в конец списка, старые остаются на месте
+      setJokes((prevJokes: JokeInList[]): JokeInList[] => {
+        return [...prevJokes, { ...response.data, uid: v4() }];
+      });
       setError(undefined);
     } catch {
-      // Запрос упал - кладем текст ошибки в state и убираем прошлую шутку
-      setJoke(undefined);
+      // Запрос упал - показываем ошибку, но уже набранный список не трогаем
       setError("Some Network Error");
     } finally {
       setIsLoading(false);
     }
   };
 
-  // MOUNTING - пустой массив зависимостей, запрос уходит один раз при появлении компонента
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    getJoke();
-  }, []);
+  // Удаление: оставляем все шутки, кроме той, на кнопку которой нажали
+  const onDelete = (uid: string): void => {
+    setJokes((prevJokes: JokeInList[]): JokeInList[] => {
+      return prevJokes.filter((joke: JokeInList): boolean => {
+        return joke.uid !== uid;
+      });
+    });
+  };
 
   return (
     <PageWrapper>
       <Card>
-        <Title>Random joke</Title>
-        <JokeContainer>
-          {!!joke && <Setup>{joke.setup}</Setup>}
-          {!!joke && <Punchline>{joke.punchline}</Punchline>}
-          {!!error && <ErrorText>{error}</ErrorText>}
-        </JokeContainer>
-        <Button
-          disabled={isLoading}
-          name="Get new joke"
-          onClick={getJoke}
-        />
+        <Title>Random jokes</Title>
+        <JokesList>
+          {jokes.map((joke: JokeInList) => {
+            return (
+              <JokeItem key={joke.uid}>
+                <JokeRow>
+                  <JokeText>
+                    <Setup>{joke.setup}</Setup>
+                    <Punchline>{joke.punchline}</Punchline>
+                  </JokeText>
+                  <ButtonControl>
+                    <Button
+                      name="Delete"
+                      isRed={true}
+                      onClick={() => onDelete(joke.uid)}
+                    />
+                  </ButtonControl>
+                </JokeRow>
+              </JokeItem>
+            );
+          })}
+        </JokesList>
+        {!!error && <ErrorText>{error}</ErrorText>}
+        <Button disabled={isLoading} name="Get new joke" onClick={getJoke} />
       </Card>
     </PageWrapper>
   );
