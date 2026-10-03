@@ -23,12 +23,13 @@ import GlobalStyles from "styles/GlobalStyles";
 //import Lesson_09 from "lessons/Lesson_09/Lesson_09";
 //import Lesson_10 from "lessons/Lesson_10/Lesson_10";
 //import Lesson_11 from "lessons/Lesson_11/Lesson_11";
-import Lesson_13 from "lessons/Lesson_13/Lesson_13";
+//import Lesson_13 from "lessons/Lesson_13/Lesson_13";
 
 // Homeworks
 //import Homework_07 from "homeworks/Homework_07/Homework_07";
 //import Homework_09 from "homeworks/Homework_09/Homework_09";
 //import Homework_10 from "homeworks/Homework_10/Homework_10";
+import Homework_13 from "homeworks/Homework_13/Homework_13";
 
 function App() {
   return (
@@ -56,10 +57,11 @@ function App() {
       {/* <Lesson_09 /> */}
       {/* <Lesson_10 /> */}
       {/* <Lesson_11 /> */}
-      <Lesson_13 />
+      {/* <Lesson_13 /> */}
       {/* <Homework_07 /> */}
       {/* <Homework_09 /> */}
       {/* <Homework_10 /> */}
+      <Homework_13 />
     </BrowserRouter>
   );
 }
