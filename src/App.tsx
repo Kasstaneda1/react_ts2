@@ -29,7 +29,8 @@ import GlobalStyles from "styles/GlobalStyles";
 //import Homework_07 from "homeworks/Homework_07/Homework_07";
 //import Homework_09 from "homeworks/Homework_09/Homework_09";
 //import Homework_10 from "homeworks/Homework_10/Homework_10";
-import Homework_13 from "homeworks/Homework_13/Homework_13";
+//import Homework_13 from "homeworks/Homework_13/Homework_13";
+import Homework_14 from "homeworks/Homework_14/Homework_14";
 
 function App() {
   return (
@@ -61,7 +62,8 @@ function App() {
       {/* <Homework_07 /> */}
       {/* <Homework_09 /> */}
       {/* <Homework_10 /> */}
-      <Homework_13 />
+      {/* <Homework_13 /> */}
+      <Homework_14 />
     </BrowserRouter>
   );
 }
